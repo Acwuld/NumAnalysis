@@ -1,3 +1,5 @@
+import numpy as np
+import matplotlib.pyplot as plt
 def Lagrange(A,B,*b): #=b至多为三维数组，(b[1],b[2])为区间长度，b[0]是计算f(b[0])
     A,B=np.array(A,dtype=float),np.array(B,dtype=float)
     def Larange_1(A,a):
