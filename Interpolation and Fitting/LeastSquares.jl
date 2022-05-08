@@ -52,6 +52,7 @@ function Pollt(x::Array,y::Array,n)
     yvals=map(x->poly(x,a),xaxis)
     plot(xaxis,yvals)
     scatter(x,y)
+    gcf()
 end
 xd=[1,2,3,4,5,6]
 yd=[3,5,9.2,11,14.5,19]
