@@ -46,6 +46,7 @@ function SSE(A::Array,x::Array,y::Array)
     return sum
 end
 function Pollt(x::Array,y::Array,n)
+    cla()
     m=length(x)
     a=leastsqfit(xd,yd,n)
     xaxis=x[1]:1/100:x[m]
