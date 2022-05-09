@@ -1,5 +1,5 @@
 ## 此反幂法为十分偷懒
-def 反幂法_1(A,u,p,N):
+def IPowerm(A,u,p,N):
     A,u,t,a=np.array(A,dtype=float),np.array(u,dtype=float),1,0
     A=np.linalg.inv(A)#此处直接求逆矩阵，其余大部分与乘幂法相同
     for i in range(N):
@@ -19,4 +19,4 @@ def 反幂法_1(A,u,p,N):
             break
 A=[[-1,2,1],[2,-4,1],[1,1,-6]]
 u=[1,1,1]
-反幂法_1(A,u,10e-5,100)
+IPowerm(A,u,10e-5,100)
