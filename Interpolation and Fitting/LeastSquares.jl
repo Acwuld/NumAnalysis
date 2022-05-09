@@ -46,9 +46,9 @@ function SSE(A::Array,x::Array,y::Array)
     return sum
 end
 function Pollt(x::Array,y::Array,n)
-    n=length(x)
-    a=leastsqfit(xd,yd,1)
-    xaxis=x[1]:1/100:x[n]
+    m=length(x)
+    a=leastsqfit(xd,yd,n)
+    xaxis=x[1]:1/100:x[m]
     yvals=map(x->poly(x,a),xaxis)
     plot(xaxis,yvals)
     scatter(x,y)
@@ -56,6 +56,4 @@ function Pollt(x::Array,y::Array,n)
 end
 xd=[1,2,3,4,5,6]
 yd=[3,5,9.2,11,14.5,19]
-a=leastsqfit(xd,yd,1)
-display(a)
 Pollt(xd,yd,1)
