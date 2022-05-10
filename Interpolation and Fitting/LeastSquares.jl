@@ -38,10 +38,10 @@ function poly(x,A::Array)
     end
     return sum
 end
-function SSE(A::Array,x::Array,y::Array)
+function leastsqerror(A::Array,x::Array,y::Array)
     m,sum=length(y),0
     for i in 1:m
-        sum=sum+(y[i]-poly(x[i],a))^2
+        sum=sum+(y[i]-poly(x[i],A))^2
     end
     return sum
 end
@@ -57,4 +57,6 @@ function Pollt(x::Array,y::Array,n)
 end
 xd=[1,2,3,4,5,6]
 yd=[3,5,9.2,11,14.5,19]
+a=leastsqfit(xd,yd,1)
+leastsqerror(a,xd,yd)
 Pollt(xd,yd,1)
