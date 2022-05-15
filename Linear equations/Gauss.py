@@ -1,32 +1,26 @@
 import numpy as ny
 def GAUSS(A,b):
     A,b=ny.array(A,dtype=float),ny.array(b,dtype=float)
-    h,l=A.shape
-    n=b.shape[0]
+    n=A.shape[0]
     b=b.reshape(n,1)
-    if h!=l or l!=n:
-        return "你输入的不对"
-    else:
-        A=ny.c_[A,b]
-        for k in range(h):
-            a=A[k:n,k]#13-19选主元
-            a=ny.abs(a)
-            dt=ny.max(a,axis=0)
-            t=ny.argmax(a,axis=0)
-            if dt>a[0]:
-                A[(k,t+k),:]=A[(t+k,k),:]
-            for t in range(k,h-1):
-                A[(t+1),:]=A[(t+1),:]-A[k,:]*A[(t+1),k]/A[k,k]
-        print(A) #输出对角阵
-        x=ny.zeros(h)
-        s=ny.zeros(h+1)
-        for k in range(h-1,-1,-1):
-            x[k]=(A[k,h]-s[k+1])/A[k,k]
-            if ny.abs(x[k])<1.0e-10:#极小化为0
-                x[k]=0
-            if k>=1:
-                for i in range(k,h):
-                    s[k]=s[k]+A[k-1,i]*x[i]
+    A=ny.c_[A,b]
+    for k in range(n):
+        a=A[k:n,k]
+        a=ny.abs(a)
+        dt=ny.max(a,axis=0)
+        t=ny.argmax(a,axis=0)
+        if dt>a[0]:
+            A[(k,t+k),:]=A[(t+k,k),:]
+        for t in range(k,n-1):
+            A[(t+1),:]=A[(t+1),:]-A[k,:]*A[(t+1),k]/A[k,k]
+    x,s=ny.zeros(n),ny.zeros(n+1)
+    for k in range(n-1,-1,-1):
+        x[k]=(A[k,n]-s[k+1])/A[k,k]
+        if ny.abs(x[k])<1.0e-10:#极小化为0
+            x[k]=0
+        if k>=1:
+            for i in range(k,n):
+                s[k]=s[k]+A[k-1,i]*x[i]
     return x.reshape(n,1)
 A=[[4,2,-3,-1,2,1,0,0,0,0],
     [8,6,-5,-3,6,5,0,1,0,0],
