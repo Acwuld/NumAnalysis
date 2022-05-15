@@ -1,8 +1,4 @@
-# 数值分析实验代码
-### 仅供参考**交流**
-#### 使用方法
-1. 点击任何文件，即可预览内部所有内容。
-2. 点击**Issues->New Issues**可以提问交流。
-3. 点击右上角绿色按钮**Code->Download ZIP**即可打包下载。
-4. 如果您想修改文件或添加文件，可以点击**Add file**，当然，需要管理员审核。
-#### 代码很可能有bug。另外，没有足够的注释。如果您能修改Bug或增加注释，请直接Pull requests.不胜感激。
+# Numerical analysis experiment class code
+The content involves linear equations, nonlinear equations, matrix eigenvalues, interpolation and fitting, differential equations, etc.
+#### My ability is very limited, there may be a problem with the code, I hope you can point it out.
+#### Also, I'll try to add more languages to implement these algorithms, but I'd appreciate it if you could provide it.
