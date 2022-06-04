@@ -1,4 +1,4 @@
-## 这是Jacobi迭代的矩阵向量形式
+## 
 import numpy as np
 def Jacobi(A,b,x,a,N):## A系数矩阵,b向量,x初始迭代向量,a精度要求,N最大迭代次数
     A,b,x=np.array(A,dtype=float),np.array(b,dtype=float),np.array(x,dtype=float)
