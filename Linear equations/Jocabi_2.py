@@ -1,4 +1,4 @@
-## Jacobi的分量形式
+## Jacobi Component form
 import numpy as np
 def Jacobi(A,b,x,e,N): ## Ax=b,e precision ,N max times 
     A,b=np.array(A,dtype=float),np.array(b,dtype=float)
