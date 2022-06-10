@@ -1,6 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-A=[[-1,-6],[1,0],[2,6]]
 def diff(A):
     A=np.array(A,dtype=float)
     n=A.shape[0]
