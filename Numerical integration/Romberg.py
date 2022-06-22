@@ -1,30 +1,39 @@
-#有点问题未解决…
 import numpy as np
-def Romberg(f,a,b,e):
-    n=6
-    def T0(n):
-        T=np.zeros(n,dtype=float)
-        T[0]=(b-a)*(f(a)+f(b))/2
-        for i in range(1,n):
-            s=0
-            for j in range(2**(i-1)):
-                s=s+f(a+(2*j+1)*(b-a)/(2**i))
-            T[i]=T[i-1]/2+(b-a)/2**i*s
-        return T
-    Ta=T0(n)
-    print(Ta)
-    def T1(T,k):
-        m=len(T)
-        for i in range(m-1):
-            T[i]=(4**k*T[i+1]-T[i])/(4**k-1)
-        T=np.delete(T,m-1)
-        return T
-    for k in range(1,n):
-        N=len(Ta)
-        for i in range(1,N):
-            if abs(Ta[i]-Ta[i-1])<e:
-                print(Ta[i]);break
-        else:Ta=T1(Ta,k) 
-def f5(x):
-    return x**(3/2)
-Romberg(f5,0,1,10e-5)
+def trapezoid(f,a,b,N):
+    h   = (b-a)/N
+    xi  = np.linspace(a,b,N+1)
+    fi  = [f(xi[i]) for i in range(N+1)]
+    s   = 0.0
+    for i in range(1,N):
+        s = s + fi[i]
+    s = (h/2)*(fi[0] + fi[N]) + h*s
+    return s
+def romberg(f,a,b,e,N):
+    Q = np.zeros((N,N),float)
+    for i in range(0,N):
+        N= 2**i
+        Q[i,0] = trapezoid(f,a,b,N)
+        for k in range(0,i):
+            n        = k + 2
+            Q[i,k+1] = 1.0/(4**(n-1)-1)*(4**(n-1)*Q[i,k] - Q[i-1,k])
+        if (i > 0):
+            if (abs(Q[i,k+1] - Q[i,k]) < e):
+               break
+    print( Q[i,k+1],N )   
+    return Q[i,k+1]
+def f1(x):
+    return np.sqrt(4-(np.sin(x))**2)
+def f2(x):
+   if x==0: return 1
+   else: return np.sin(x)/x
+def f3(x):
+   return np.exp(x)/(4+x**2)
+def f4(x):
+    return np.log(1+x)/(1+x**2)
+romberg(f1,0,0.25,1.0e-12,10)
+romberg(f2,0,1,1.0e-12,10)
+romberg(f3,0,1,1.0e-12,10)
+romberg(f4,0,1,1.0e-12,10)
+#Romberg
+#g = lambda x: 1/np.sqrt(np.pi) * np.exp(-x**2)
+#result = integrate.romberg(g, 0, 1, show=True)
