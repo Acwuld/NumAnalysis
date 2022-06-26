@@ -1,6 +1,5 @@
-## 
 import numpy as np
-def Jacobi(A,b,x,a,N):## A系数矩阵,b向量,x初始迭代向量,a精度要求,N最大迭代次数
+def Jacobi(A,b,x,a,N):
     A,b,x=np.array(A,dtype=float),np.array(b,dtype=float),np.array(x,dtype=float)
     n,t,nn=A.shape[0],1,0
     x0=np.zeros((n,1))
