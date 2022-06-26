@@ -1,7 +1,7 @@
 import numpy as np
-def func(x):
+def f(x):
     return np.sin(x)
-def dic(a,b,e):## 区间（a，b）上的根，e是精度
+def dic(func,a,b,e):
     while func(a)*func(b)<=0 and abs(a-b)>10e-5:
         c=(a+b)/2
         print('c=',c)
@@ -9,4 +9,4 @@ def dic(a,b,e):## 区间（a，b）上的根，e是精度
             a=c
         else:
             b=c
-dic(-1,1,10e-5)
+dic(f,-1,1,10e-5)
