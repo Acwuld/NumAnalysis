@@ -1,5 +1,5 @@
 import numpy as np
-def PowerM(A,u,p,N): ## A矩阵，u迭代初始向量，p精度，N最大迭代次数
+def PowerM(A,u,p,N): 
     A,u,t,a=np.array(A,dtype=float),np.array(u,dtype=float),1,0
     for i in range(N):
         u=A.dot(u)
