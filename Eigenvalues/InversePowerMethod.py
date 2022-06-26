@@ -1,7 +1,7 @@
-## 此反幂法为十分偷懒
+import numpy
 def IPowerm(A,u,p,N):
     A,u,t,a=np.array(A,dtype=float),np.array(u,dtype=float),1,0
-    A=np.linalg.inv(A)#此处直接求逆矩阵，其余大部分与乘幂法相同
+    A=np.linalg.inv(A)
     for i in range(N):
         u=A.dot(u)
         u1=abs(u)
