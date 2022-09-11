@@ -2,7 +2,7 @@ import numpy as np
 def f(x):
     return np.sin(x)
 def dic(func,a,b,e):
-    while func(a)*func(b)<=0 and abs(a-b)>10e-5:
+    while func(a)*func(b)<=0 and abs(a-b)>e:
         c=(a+b)/2
         print('c=',c)
         if func(c)*func(b)<=0:
